@@ -11,48 +11,55 @@
       --light: #f7f7f7;
       --text: #333;
       --soft-white: #ffffff;
-      --skyblue: #87ceeb;
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: var(--light);
       color: var(--text);
       line-height: 1.6;
     }
+
     header {
-      background-color: var(--skyblue); /* changed to sky blue */
-      color: var(--text);
+      background-color: var(--blue); /* Navy blue */
       padding: 30px 20px;
       text-align: center;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       position: relative;
     }
+
     header h1 {
       font-size: 2.8rem;
-      color: var(--gold); /* changed title text to gold */
+      color: var(--gold); /* Title text gold */
     }
+
     .tagline {
       font-size: 1.2rem;
-      color: white;
-      font-weight: 300;
+      color: var(--gold); /* Tagline text gold */
+      font-weight: 500;
     }
+
     nav {
       margin-top: 20px;
     }
+
     nav a {
-      color: black;
+      color: white;
       margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
     }
+
     nav a:hover {
-      color: var(--blue);
+      color: var(--gold);
     }
+
     #languageSelector {
       position: absolute;
       right: 20px;
@@ -62,20 +69,24 @@
       border: 1px solid #ccc;
       font-weight: bold;
     }
+
     .hero {
       text-align: center;
       padding: 60px 20px;
       background: linear-gradient(to right, #f7f7f7, #fff);
     }
+
     .hero h2 {
       font-size: 2.5rem;
       color: var(--blue);
       margin-bottom: 15px;
     }
+
     .hero p {
       font-size: 1.2rem;
       margin-bottom: 25px;
     }
+
     .btn {
       background-color: var(--gold);
       color: black;
@@ -85,9 +96,11 @@
       font-weight: bold;
       transition: background-color 0.3s;
     }
+
     .btn:hover {
       background-color: #b8942f;
     }
+
     .progress-container {
       width: 80%;
       background-color: #e0e0e0;
@@ -96,6 +109,7 @@
       height: 25px;
       overflow: hidden;
     }
+
     .progress-bar {
       height: 100%;
       width: 0%;
@@ -106,6 +120,7 @@
       font-weight: bold;
       transition: width 1s ease;
     }
+
     .categories {
       padding: 40px 20px;
       background: var(--soft-white);
@@ -115,18 +130,21 @@
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
+
     .categories h3 {
       text-align: center;
       font-size: 2rem;
       color: var(--blue);
       margin-bottom: 30px;
     }
+
     .category-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
     }
+
     .category-card {
       background: #fdf6e3;
       border: 2px solid var(--gold);
@@ -140,10 +158,12 @@
       width: 250px;
       text-align: center;
     }
+
     .category-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     }
+
     .donor-feed {
       background: var(--soft-white);
       margin: 40px auto;
@@ -153,20 +173,24 @@
       border-left: 6px solid var(--gold);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
+
     .donor-feed h3 {
       font-size: 1.5rem;
       margin-bottom: 10px;
       color: var(--blue);
     }
+
     .donor-feed ul {
       list-style: none;
       padding: 0;
     }
+
     .donor-feed li {
       padding: 8px 0;
       font-size: 1rem;
       border-bottom: 1px solid #eee;
     }
+
     footer {
       background-color: var(--gold);
       color: black;
@@ -174,13 +198,10 @@
       padding: 20px;
       margin-top: 40px;
     }
+
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
-      .hero h2 {
-        font-size: 2rem;
-      }
+      header h1 { font-size: 2.2rem; }
+      .hero h2 { font-size: 2rem; }
       .category-grid {
         flex-direction: column;
         align-items: center;
@@ -189,6 +210,7 @@
   </style>
 </head>
 <body>
+
   <header>
     <h1 id="title">Golden Hope</h1>
     <p class="tagline" id="tagline">Every Ringgit, Every Life</p>
@@ -196,8 +218,6 @@
       <a href="index.html" id="homeLink">Home</a>
       <a href="about.html" id="aboutLink">About</a>
       <a href="donate.html" id="donateLink">Donate</a>
-      <a href="contact.html" id="contactLink">Contact</a>
-      <a href="gallery.html" id="galleryLink">Gallery</a>
     </nav>
     <select id="languageSelector" onchange="changeLanguage()">
       <option value="en">English</option>
@@ -243,8 +263,8 @@
 
     const donorList = document.getElementById('donorList');
     const donations = JSON.parse(localStorage.getItem('donations')) || [];
-    const latestDonors = donations.slice(-5).reverse();
 
+    const latestDonors = donations.slice(-5).reverse();
     if (latestDonors.length === 0) {
       const li = document.createElement('li');
       li.textContent = "Be the first to donate!";
@@ -274,8 +294,11 @@
       }
     }
   </script>
+
 </body>
 </html>
+
+
 
 
 
