@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Golden Hope Charity</title>
+  <style>
+    :root {
+      --gold: #d4af37;
+      --blue: #003366;
+      --light: #f7f7f7;
+      --text: #333;
+      --soft-white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--gold);
+      color: var(--text);
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: white;
+      font-weight: 300;
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+
+    nav a {
+      color: black;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+    }
+
+    #languageSelector {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-weight: bold;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(to right, #f7f7f7, #fff);
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      color: var(--blue);
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      background-color: var(--gold);
+      color: black;
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #b8942f;
+    }
+
+    .progress-container {
+      width: 80%;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      margin: 20px auto;
+      height: 25px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: var(--gold);
+      text-align: center;
+      line-height: 25px;
+      color: black;
+      font-weight: bold;
+      transition: width 1s ease;
+    }
+
+    .categories {
+      padding: 40px 20px;
+      background: var(--soft-white);
+      width: 90%;
+      max-width: 1000px;
+      margin: 50px auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .categories h3 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--blue);
+      margin-bottom: 30px;
+    }
+
+    .category-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .category-card {
+      background: #fdf6e3;
+      border: 2px solid var(--gold);
+      padding: 30px 40px;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 250px;
+      text-align: center;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .donor-feed {
+      background: var(--soft-white);
+      margin: 40px auto;
+      padding: 20px;
+      width: 80%;
+      max-width: 800px;
+      border-left: 6px solid var(--gold);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .donor-feed h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--blue);
+    }
+
+    .donor-feed ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .donor-feed li {
+      padding: 8px 0;
+      font-size: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    footer {
+      background-color: var(--gold);
+      color: black;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.2rem; }
+      .hero h2 { font-size: 2rem; }
+      .category-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 id="title">Golden Hope</h1>
+    <p class="tagline" id="tagline">Every Ringgit, Every Life</p>
+    <nav>
+      <a href="index.html" id="homeLink">Home</a>
+      <a href="about.html" id="aboutLink">About</a>
+      <a href="donate.html" id="donateLink">Donate</a>
+    </nav>
+    <select id="languageSelector" onchange="changeLanguage()">
+      <option value="en">English</option>
+      <option value="ms">Malay</option>
+    </select>
+  </header>
+
+  <section class="hero">
+    <h2 id="heroTitle">Bringing Transparency to Giving</h2>
+    <p id="heroText">Track your donations. Know the impact. Change lives.</p>
+    <div class="progress-container">
+      <div class="progress-bar" id="donationProgress">0%</div>
+    </div>
+    <p id="goalText">Goal: RM 50,000</p>
+    <a class="btn" href="donate.html" id="donateBtn">Donate Now</a>
+  </section>
+
+  <section class="categories">
+    <h3>Explore Causes</h3>
+    <div class="category-grid">
+      <a href="viewprofile.html?category=education" class="category-card">🎓 Education</a>
+      <a href="viewprofile.html?category=medical" class="category-card">🩺 Medical</a>
+      <a href="viewprofile.html?category=single-parents" class="category-card">👨‍👧‍👦 Single Parents</a>
+    </div>
+  </section>
+
+  <section class="donor-feed">
+    <h3 id="donorFeedTitle">Recent Donors</h3>
+    <ul id="donorList"></ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Golden Hope Foundation</p>
+  </footer>
+
+  <script>
+    const currentDonation = 15000;
+    const goalAmount = 50000;
+    const progressBar = document.getElementById('donationProgress');
+    const donationPercentage = (currentDonation / goalAmount) * 100;
+    progressBar.style.width = donationPercentage + '%';
+    progressBar.textContent = Math.round(donationPercentage) + '%';
+
+    const donorList = document.getElementById('donorList');
+    const donations = JSON.parse(localStorage.getItem('donations')) || [];
+
+    const latestDonors = donations.slice(-5).reverse();
+    if (latestDonors.length === 0) {
+      const li = document.createElement('li');
+      li.textContent = "Be the first to donate!";
+      donorList.appendChild(li);
+    } else {
+      latestDonors.forEach(d => {
+        const li = document.createElement('li');
+        li.textContent = `${d.name || 'Anonymous'} donated RM ${parseFloat(d.amount).toFixed(2)}`;
+        donorList.appendChild(li);
+      });
+    }
+
+    function changeLanguage() {
+      const lang = document.getElementById('languageSelector').value;
+      if (lang === 'ms') {
+        document.getElementById("heroTitle").textContent = "Membawa Ketelusan dalam Memberi";
+        document.getElementById("heroText").textContent = "Jejak sumbangan anda. Ketahui impaknya. Ubah kehidupan.";
+        document.getElementById("goalText").textContent = "Matlamat: RM 50,000";
+        document.getElementById("donateBtn").textContent = "Derma Sekarang";
+        document.getElementById("donorFeedTitle").textContent = "Derma Terbaru";
+      } else {
+        document.getElementById("heroTitle").textContent = "Bringing Transparency to Giving";
+        document.getElementById("heroText").textContent = "Track your donations. Know the impact. Change lives.";
+        document.getElementById("goalText").textContent = "Goal: RM 50,000";
+        document.getElementById("donateBtn").textContent = "Donate Now";
+        document.getElementById("donorFeedTitle").textContent = "Recent Donors";
+      }
+    }
+  </script>
+
+</body>
+</html>

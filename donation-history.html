@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donation History</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #d4af37; /* Gold Yellow */
+      color: black;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: black;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #333;
+    }
+
+    .donation-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .donation-card {
+      background-color: white;
+      border-left: 6px solid #d4af37; /* Gold Yellow border */
+      border-radius: 12px;
+      padding: 20px;
+      width: calc(33.333% - 20px); /* Three cards per row */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .donation-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .donation-card p {
+      margin-bottom: 8px;
+    }
+
+    .donation-card small {
+      color: #777;
+    }
+
+    footer {
+      background-color: #d4af37; /* Gold Yellow */
+      color: black;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 1024px) {
+      .donation-card {
+        width: calc(50% - 20px); /* Two cards per row on medium screens */
+      }
+    }
+
+    @media (max-width: 600px) {
+      .donation-card {
+        width: 100%; /* One card per row on small screens */
+      }
+
+      .section-title {
+        font-size: 1.5rem; /* Smaller title on mobile */
+      }
+
+      nav a {
+        display: block;
+        margin: 5px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Golden Hope Charity</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="donate.html">Donate</a>
+      <a href="donation-history.html" class="active">Donation History</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2 class="section-title">Donation History</h2>
+    <div id="donationList" class="donation-list"></div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Golden Hope Charity | See the Change You Make. Every Ringgit, Every Life.</p>
+  </footer>
+
+  <script>
+    window.onload = function () {
+      const donationListContainer = document.getElementById('donationList');
+      const donations = JSON.parse(localStorage.getItem('donations')) || [];
+
+      if (donations.length === 0) {
+        donationListContainer.innerHTML = "<p>No donations yet.</p>";
+        return;
+      }
+
+      donations.forEach(donation => {
+        const card = document.createElement('div');
+        card.className = 'donation-card';
+
+        card.innerHTML = `
+          <p><strong>Name:</strong> ${donation.name}</p>
+          <p><strong>Email:</strong> ${donation.email}</p>
+          <p><strong>Amount:</strong> RM ${donation.amount}</p>
+          <p><strong>Message:</strong> ${donation.message || "—"}</p>
+          <p><small><strong>Donated At:</strong> ${new Date(donation.timestamp).toLocaleString()}</small></p>
+        `;
+
+        donationListContainer.appendChild(card);
+      });
+    };
+  </script>
+</body>
+</html>

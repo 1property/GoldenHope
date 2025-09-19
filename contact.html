@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Golden Hope</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --gold-yellow: #d4af37;
+      --gold-dark: #c39c26;
+      --light-bg: #fffef5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--gold-yellow);
+      color: black;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: white;
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+
+    nav a {
+      color: black;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a.active {
+      color: white;
+    }
+
+    .contact-container {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 20px;
+    }
+
+    .contact-title {
+      font-size: 2rem;
+      text-align: center;
+      color: var(--gold-yellow);
+      margin-bottom: 20px;
+    }
+
+    .contact-form {
+      background: var(--light-bg);
+      border-left: 6px solid var(--gold-yellow);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #444;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+    }
+
+    .btn {
+      background-color: var(--gold-yellow);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--gold-dark);
+    }
+
+    .thank-you-message {
+      margin-top: 15px;
+      color: green;
+      font-weight: bold;
+      display: none;
+    }
+
+    footer {
+      background-color: var(--gold-yellow);
+      color: black;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Golden Hope</h1>
+    <p class="tagline">See the Change You Make. Every Ringgit, Every Life.</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="donate.html">Donate</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <div class="contact-container">
+    <h2 class="contact-title">Contact Us</h2>
+    <form class="contact-form" id="contactForm">
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required />
+      </div>
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn">Send Message</button>
+      <div class="thank-you-message" id="thankYouMsg">Thank you! We'll get back to you soon.</div>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Golden Hope Foundation</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const thankYouMsg = document.getElementById('thankYouMsg');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      thankYouMsg.style.display = 'block';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
