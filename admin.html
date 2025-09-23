@@ -2,156 +2,273 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin - Add Donation Profile</title>
-  <script src="https://unpkg.com/@supabase/supabase-js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Golden Hope Charity</title>
   <style>
     :root {
-      --primary: #d4af37;
-      --accent: #003366;
-      --bg: #f7f7f7;
+      --gold: #d4af37;
+      --blue: #003366;
+      --light: #f7f7f7;
       --text: #333;
+      --soft-white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light);
       color: var(--text);
-      padding: 40px 20px;
+      line-height: 1.6;
     }
 
-    .form-container {
-      max-width: 600px;
-      margin: auto;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-      padding: 40px;
-      border-top: 6px solid var(--primary);
-    }
-
-    h2 {
+    /* Header */
+    header {
+      background-color: var(--blue);
+      padding: 30px 20px;
       text-align: center;
-      margin-bottom: 30px;
-      color: var(--accent);
-      font-size: 1.8rem;
+      border-radius: 15px;
+      margin: 20px auto;
+      width: 95%;
+      max-width: 1100px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
+                  0 8px 30px rgba(0, 0, 0, 0.15);
     }
 
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-      font-size: 0.95rem;
+    header h1 {
+      font-size: 2.8rem;
+      color: var(--gold);
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
     }
 
-    input, select, textarea {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 20px;
+    .tagline {
+      font-size: 1.2rem;
+      color: var(--gold);
+      font-weight: 500;
+      margin-top: 5px;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    #languageSelector {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      padding: 5px 10px;
+      border-radius: 5px;
       border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      background: #fff;
-      transition: border-color 0.3s ease;
-    }
-
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--primary);
-      outline: none;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      background: var(--primary);
-      border: none;
-      color: #000;
-      font-weight: 600;
-      font-size: 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: #b98c0b;
-    }
-
-    .message {
-      text-align: center;
-      margin-top: 15px;
       font-weight: bold;
     }
 
-    @media (max-width: 600px) {
-      .form-container {
-        padding: 25px;
-      }
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(to right, #f7f7f7, #fff);
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      color: var(--blue);
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+    }
+
+    /* Upcoming Events */
+    .events {
+      max-width: 800px;
+      margin: 30px auto;
+      background: #e6e6e6;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+      text-align: left;
+    }
+
+    .events h3 {
+      color: navy;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .event {
+      border-left: 4px solid gold;
+      padding: 10px 15px;
+      margin-bottom: 15px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+    }
+
+    .event:hover {
+      transform: translateY(-3px);
+    }
+
+    .event strong {
+      color: navy;
+    }
+
+    /* Add Event Form */
+    .event-form {
+      max-width: 600px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .event-form h3 {
+      text-align: center;
+      color: var(--blue);
+      margin-bottom: 15px;
+    }
+
+    .event-form input, 
+    .event-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .event-form button {
+      background: var(--gold);
+      color: black;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+    }
+
+    .event-form button:hover {
+      background: #b8942f;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--blue);
+      color: gold;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+      border-radius: 20px 20px 0 0;
     }
   </style>
 </head>
 <body>
 
-<div class="form-container">
-  <h2>Add Donation Profile</h2>
-  <form id="donation-form">
-    <label for="name">Full Name</label>
-    <input type="text" id="name" placeholder="e.g. Nur Aina" required />
+  <header>
+    <h1>Golden Hope</h1>
+    <p class="tagline">Every Ringgit, Every Life</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="donate.html">Donate</a>
+    </nav>
+  </header>
 
-    <label for="category">Category</label>
-    <select id="category" required>
-      <option value="">Select Category</option>
-      <option value="Education">Education</option>
-      <option value="Medical">Medical</option>
-      <option value="Single Parent">Single Parent</option>
-    </select>
+  <section class="hero">
+    <h2>Bringing Transparency to Giving</h2>
+    <p>Track your donations. Know the impact. Change lives.</p>
+  </section>
 
-    <label for="amount">Amount Needed (RM)</label>
-    <input type="number" id="amount" placeholder="e.g. 3500" required />
+  <!-- Upcoming Events -->
+  <div class="events">
+    <h3>Upcoming Events</h3>
+    <div id="eventList"></div>
+  </div>
 
-    <label for="story">Their Story</label>
-    <textarea id="story" rows="4" placeholder="Brief story about the person" required></textarea>
+  <!-- Add Event Form -->
+  <div class="event-form">
+    <h3>Add New Event</h3>
+    <input type="date" id="eventDate" placeholder="Event Date" />
+    <input type="text" id="eventPlace" placeholder="Event Place" />
+    <input type="text" id="eventTime" placeholder="Event Time" />
+    <textarea id="eventDesc" placeholder="Event Description"></textarea>
+    <button onclick="addEvent()">Add Event</button>
+  </div>
 
-    <label for="image">Upload Image</label>
-    <input type="file" id="image" accept="image/*" required />
+  <footer>
+    <p>&copy; Theenesh 2025 Golden Hope Foundation</p>
+  </footer>
 
-    <button type="submit">Add Profile</button>
-    <div class="message" id="form-message"></div>
-  </form>
-</div>
+  <script>
+    let events = JSON.parse(localStorage.getItem("events")) || [];
 
-<script>
-  const SUPABASE_URL = "https://yjuqzlcyipfqxiqjeucm.supabase.co";
-  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlqdXF6bGN5aXBmcXhpcWpldWNtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUwNzY1NDEsImV4cCI6MjA2MDY1MjU0MX0.E1zeypcFTESHPvpygG1-8kjbgvmXi15UAkffIp-vXU8";
-  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-  const form = document.getElementById("donation-form");
-  const message = document.getElementById("form-message");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value;
-    const category = document.getElementById("category").value;
-    const amount = parseFloat(document.getElementById("amount").value);
-    const story = document.getElementById("story").value;
-    const image = document.getElementById("image").value;
-
-    const { data, error } = await supabase
-      .from("donation_profiles")
-      .insert([{ name, category, amount_needed: amount, story, image_url: image }]);
-
-    if (error) {
-      message.textContent = "❌ Error: " + error.message;
-      message.style.color = "red";
-    } else {
-      message.textContent = "✅ Profile added successfully!";
-      message.style.color = "green";
-      form.reset();
+    function renderEvents() {
+      const eventList = document.getElementById("eventList");
+      eventList.innerHTML = "";
+      if (events.length === 0) {
+        eventList.innerHTML = "<p>No upcoming events yet.</p>";
+      } else {
+        events.forEach(ev => {
+          const div = document.createElement("div");
+          div.className = "event";
+          div.innerHTML = `
+            <strong>📅 Date:</strong> ${ev.date} <br>
+            <strong>📍 Place:</strong> ${ev.place} <br>
+            <strong>⏰ Time:</strong> ${ev.time} <br>
+            <em>${ev.desc}</em>
+          `;
+          eventList.appendChild(div);
+        });
+      }
     }
-  });
-</script>
+
+    function addEvent() {
+      const date = document.getElementById("eventDate").value;
+      const place = document.getElementById("eventPlace").value;
+      const time = document.getElementById("eventTime").value;
+      const desc = document.getElementById("eventDesc").value;
+
+      if (!date || !place || !time || !desc) {
+        alert("Please fill all fields!");
+        return;
+      }
+
+      events.push({ date, place, time, desc });
+      localStorage.setItem("events", JSON.stringify(events));
+
+      document.getElementById("eventDate").value = "";
+      document.getElementById("eventPlace").value = "";
+      document.getElementById("eventTime").value = "";
+      document.getElementById("eventDesc").value = "";
+
+      renderEvents();
+    }
+
+    renderEvents();
+  </script>
 
 </body>
 </html>
+
